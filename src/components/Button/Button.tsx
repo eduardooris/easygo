@@ -37,7 +37,7 @@ export const Button = ({
     >
       {loading ? (
         <ActivityIndicator
-          color={DesignSystem.colors.tertiary}
+          color={DesignSystem.colors.secondary}
           size={DesignSystem.icons.small}
         />
       ) : (

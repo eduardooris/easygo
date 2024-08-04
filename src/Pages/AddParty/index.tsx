@@ -49,12 +49,12 @@ export default function AddParty(
     return <Success finished={() => props.navigation.goBack()} />;
   }
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
-    <Container>
+    <Container
+      title="Nova lista"
+      icon="arrow-back-ios"
+      navigation={props.navigation}
+    >
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
@@ -81,7 +81,7 @@ export default function AddParty(
           onChangeText={(e) => setForm({ location: e })}
         />
 
-        <Button size="medium" type="solid" onPress={addParty}>
+        <Button size="medium" type="solid" loading={true} onPress={addParty}>
           Criar
         </Button>
       </ScrollView>

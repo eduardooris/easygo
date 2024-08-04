@@ -15,14 +15,20 @@ import { Avatar } from "../../components/Avatar";
 import Success from "../../components/Status/success";
 import Loading from "../../components/Status/loading";
 import { CopyText } from "../../util/CopyText/CopyText";
+import { PartyType } from "../../types/Party";
 export default function DetailParty(
   props: NativeStackScreenProps<any, "DetailParty">
 ) {
+  const [party, setParty] = useState<PartyType>();
   const [invites, setInvites] = useState<InviteType[]>([]);
   const [sucess, setSucess] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     getListInvites();
+    if (!props.route.params) {
+      props.navigation.goBack();
+    }
+    setParty(props.route.params as PartyType);
   }, []);
 
   const getListInvites = async () => {
@@ -154,7 +160,11 @@ export default function DetailParty(
   }
 
   return (
-    <Container>
+    <Container
+      title={captalize(party?.name || "")}
+      icon="arrow-back-ios"
+      navigation={props.navigation}
+    >
       <FlatList
         data={invites}
         renderItem={renderItem}

@@ -7,33 +7,40 @@ import { Input } from "../../../components/Input/Input";
 import { Button } from "../../../components/Button/Button";
 
 export default function Login({ navigation }: any) {
-  const { signIn, form, onChangeText, createRegister } =
+  const { signIn, form, onChangeText, loading, error } =
     useViewModel(navigation);
   return (
     <Container>
-      <ScrollView showsVerticalScrollIndicator={false} style={style.container}>
-        <Text typography="large">Login</Text>
-        <Input
-          placeholder="Usuário"
-          onChangeText={(e) => onChangeText({ username: e })}
-          value={form.username}
-        />
-        <Input
-          placeholder="Senha"
-          icon="lock"
-          onChangeText={(e) => onChangeText({ password: e })}
-          secureTextEntry={true}
-          value={form.password}
-        />
-        <View style={style.containerButton}>
-          <Button type="solid" size="medium" onPress={signIn}>
-            Fazer login
-          </Button>
-          <View style={{ marginTop: 10 }}>
-            <Button type="solid" size="medium" onPress={createRegister}>
-              Cadastrar-se
-            </Button>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={style.container}
+      >
+        <View />
+        <View />
+        <View />
+        <View>
+          <View style={{ alignItems: "center" }}>
+            <Text typography="large">Easy Go</Text>
           </View>
+          <View>
+            <Input
+              placeholder="Usuário"
+              onChangeText={(e) => onChangeText({ username: e })}
+              value={form.username}
+            />
+            <Input
+              placeholder="Senha"
+              icon="lock"
+              onChangeText={(e) => onChangeText({ password: e })}
+              secureTextEntry={true}
+              value={form.password}
+            />
+          </View>
+        </View>
+        <View style={{ alignItems: "center" }}>
+          <Button onPress={signIn} type="solid" size="large" loading={loading}>
+            Login
+          </Button>
         </View>
       </ScrollView>
     </Container>
@@ -41,8 +48,10 @@ export default function Login({ navigation }: any) {
 }
 
 const style = StyleSheet.create({
-  container: { paddingHorizontal: 20, flex: 1, marginTop: 50 },
-  containerButton: {
-    alignItems: "center",
+  container: {
+    flex: 1,
+    justifyContent: "space-between",
+    paddingVertical: 100,
+    paddingHorizontal: 20,
   },
 });

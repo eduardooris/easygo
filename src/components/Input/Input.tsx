@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {Input as TextInput} from 'react-native-elements';
-import {DesignSystem} from '../../util/Style/DesignSystem';
-import {StyleSheet} from 'react-native';
+import Icon from "react-native-vector-icons/FontAwesome";
+import { Input as TextInput } from "react-native-elements";
+import { DesignSystem } from "../../util/Style/DesignSystem";
+import { StyleSheet } from "react-native";
 
 interface InputProps {
   placeholder: string;
@@ -28,9 +28,9 @@ export const Input = ({
       autoCapitalize="none"
       style={style.input}
       secureTextEntry={secureTextEntry}
-      leftIcon={
+      rightIcon={
         <Icon
-          name={icon ? icon : ''}
+          name={icon ? icon : ""}
           size={24}
           color={DesignSystem.colors.secondary}
         />
@@ -41,7 +41,7 @@ export const Input = ({
 
 const style = StyleSheet.create({
   input: {
-    color: '#FFF',
+    color: "#FFF",
     fontSize: DesignSystem.typography.medium,
   },
 });
